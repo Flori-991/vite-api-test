@@ -8,8 +8,8 @@ function App() {
     const [apiResponse, setApiResponse] = useState(null);
     const apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-    const searchOnEnter = (event) => {
-        if (event.key === 'Enter'){
+    const searchOnEnter = (key : string) => {
+        if (key === 'Enter'){
             getDictApiResponse();
         }
     }
@@ -18,12 +18,12 @@ function App() {
         try {
             setApiResponse(await axios.get(apiUrl + wordToSearch));
         }
-        catch (err){
-            alert('Error calling the API!')
+        catch (e: unknown){
+            console.warn(`Error calling the API!`)
         }
     }
 
-  return (
+    return (
       <div className="App">
           <div className='dictHeader'>
 
@@ -31,7 +31,7 @@ function App() {
           <div className='searchBar'>
               <input
                   placeholder={placeHolder}
-                  onKeyDown={searchOnEnter}
+                  onKeyDown={event => searchOnEnter(event.key)}
                   onChange={event => setWordToSearch(event.target.value)}
                   id='searchBarInput'/>
               <button
@@ -43,8 +43,8 @@ function App() {
           {apiResponse && (
               <>
                   <div className='results'>
-                      <p>{apiResponse.data[0].phonetic}</p>
-                      {apiResponse.data[0].meanings.map(meaning => (<p key={meaning.definitions[0].definition}>{meaning.definitions[0].definition}</p>))}
+                      {/*<p>{apiResponse.data[0].phonetic}</p>*/}
+                      {/*{apiResponse.data[0].meanings.map(meaning => (<p key={meaning.definitions[0].definition}>{meaning.definitions[0].definition}</p>))}*/}
                   </div>
               </>
           )}
