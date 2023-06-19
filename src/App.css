@@ -52,3 +52,8 @@
   font-size: 20px;
 }
 
+.definitionText {
+  font-size: 12px;
+  text-align: left;
+  width: 500px;
+}
