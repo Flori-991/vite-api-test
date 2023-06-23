@@ -1,45 +1,61 @@
 import React from "react";
 import { ApiResponse } from "../zodSchemas/ApiResponseSchema.ts";
-// import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from "@mui/material"
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 const DataResponse: React.FunctionComponent<{ apiResponse: ApiResponse }> = ({
   apiResponse,
 }) => (
-  <table className="results">
-    <tbody>
-      <tr className="phoneticsRow">
-        {apiResponse.map((apiResponse) => (
-          <>
-            <th>
-              {apiResponse.phonetics.map((phonetic) => (
-                <p key={`${phonetic.text} ${phonetic.audio}`}>
-                  {phonetic.text}
-                </p>
-              ))}
-            </th>
-          </>
-        ))}
-      </tr>
-      <tr className="meaningsRow">
-        {apiResponse.map((apiResponse) => (
-          <>
-            <td>
-              {apiResponse.meanings.map((meaning) =>
-                meaning.definitions.map((definition) => (
-                  <p
+  <Stack className="searchResults">
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            {apiResponse.map((apiResponse) => (
+              <>
+                <TableCell
+                  key={`${apiResponse.meanings[0].definitions[0]} ${apiResponse.phonetics[0]}`}
+                >
+                  {apiResponse.phonetics.map((phonetic) => (
+                    <Typography key={`${phonetic.text} ${phonetic.audio}`}>
+                      {phonetic.text}
+                    </Typography>
+                  ))}
+                </TableCell>
+              </>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            {apiResponse.map((apiResponse) => (
+              <>
+                <TableCell
+                  key={`${apiResponse.phonetics[0]} ${apiResponse.meanings[0].definitions[0]}`}
+                >
+                  <Typography
                     className="definitionText"
-                    key={`${definition.definition}`}
+                    key={`${apiResponse.meanings[0].definitions[0].definition}`}
                   >
-                    {definition.definition}
-                  </p>
-                ))
-              )}
-            </td>
-          </>
-        ))}
-      </tr>
-    </tbody>
-  </table>
+                    {apiResponse.meanings[0].definitions[0].definition}
+                  </Typography>
+                </TableCell>
+              </>
+            ))}
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </Stack>
 );
 
 export { DataResponse };
