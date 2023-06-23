@@ -6,6 +6,8 @@ import {
   ApiResponseSchema,
 } from "./zodSchemas/ApiResponseSchema.ts";
 import { DataResponse } from "./reactComponents/DataResponse.tsx";
+import { Button, Stack, TextField, ThemeProvider } from "@mui/material";
+import { muiThemes } from "./assets/muiThemes.ts";
 
 function App() {
   const placeHolder = "Look up meanings";
@@ -29,21 +31,29 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="dictHeader"></div>
-      <div className="searchBar">
-        <input
-          placeholder={placeHolder}
-          onKeyDown={(event) => searchOnEnter(event.key)}
-          onChange={(event) => setWordToSearch(event.target.value)}
-          id="searchBarInput"
-        />
-        <button onClick={() => getDictApiResponse()} id="searchButton">
-          Search
-        </button>
-      </div>
-      {apiResponse && <DataResponse apiResponse={apiResponse} />}
-    </div>
+    <ThemeProvider theme={muiThemes}>
+      <Stack alignItems="flex-start">
+        <Stack className="dictHeader"></Stack>
+        <Stack>
+          <TextField
+            label={placeHolder}
+            variant="standard"
+            onKeyDown={(event) => searchOnEnter(event.key)}
+            onChange={(event) => setWordToSearch(event.target.value)}
+            id="searchBarInput"
+          />
+          <Button
+            className="searchButton"
+            variant="outlined"
+            onClick={() => getDictApiResponse()}
+            id="searchButton"
+          >
+            Search
+          </Button>
+        </Stack>
+        {apiResponse && <DataResponse apiResponse={apiResponse} />}
+      </Stack>
+    </ThemeProvider>
   );
 }
 
