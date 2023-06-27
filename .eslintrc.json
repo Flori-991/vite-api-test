@@ -104,10 +104,6 @@
       {
         "selector": "ImportDeclaration[source.value=react] ImportDefaultSpecifier[local.name=React]",
         "message": "React should not be imported as automatic JSX imports are enabled"
-      },
-      {
-        "selector": "ImportDeclaration[source.value=@mui/material]",
-        "message": "Importing from @mui/material loads all components which is slow. Use narrower imports instead such as @mui/material/Button"
       }
     ],
     // @typescript-eslint rules
