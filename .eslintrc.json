@@ -43,14 +43,6 @@
     "new-parens": "off",
     "newline-per-chained-call": "off",
     "no-cond-assign": "warn",
-    "no-console": [
-      "warn",
-      {
-        "allow": [
-          "error"
-        ]
-      }
-    ],
     "no-debugger": "warn",
     "no-else-return": "error",
     "no-empty-pattern": "error",
