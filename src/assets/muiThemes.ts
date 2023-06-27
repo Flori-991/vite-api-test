@@ -1,5 +1,5 @@
-import { createTheme } from "@mui/material/styles";
 import { grey, red } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
 // import { makeStyles } from "@mui/material";
 
 const muiThemes = createTheme({
@@ -26,6 +26,5 @@ const darkMode = createTheme({
 //   },
 // });
 
-export { muiThemes };
-export { darkMode };
+export { muiThemes, darkMode };
 // export { tableColumnStyle };

@@ -1,23 +1,26 @@
-import { useState } from "react";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import TextField from "@mui/material/TextField";
 import axios from "axios";
+import { useState } from "react";
 import "./App.css";
+import { muiThemes } from "./assets/muiThemes.ts";
+import { DataResponse } from "./reactComponents/DataResponse.tsx";
 import {
   ApiResponse,
   ApiResponseSchema,
 } from "./zodSchemas/ApiResponseSchema.ts";
-import { DataResponse } from "./reactComponents/DataResponse.tsx";
-import { Button, Stack, TextField, ThemeProvider } from "@mui/material";
-import { muiThemes } from "./assets/muiThemes.ts";
 
-function App() {
+const App = () => {
   const placeHolder = "Look up meanings";
   const [wordToSearch, setWordToSearch] = useState("");
   const apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
   const [apiResponse, setApiResponse] = useState<ApiResponse>();
 
-  const searchOnEnter = (key: string) => {
+  const searchOnEnter = async (key: string) => {
     if (key === "Enter") {
-      getDictApiResponse().catch();
+      await getDictApiResponse().catch();
     }
   };
 
@@ -26,7 +29,7 @@ function App() {
       const test = await axios.get(apiUrl + wordToSearch);
       setApiResponse(ApiResponseSchema.parse(test.data));
     } catch (e: unknown) {
-      console.warn("Error calling the API!");
+      // console.warn("Error calling the API!");
     }
   };
 
@@ -55,6 +58,6 @@ function App() {
       </Stack>
     </ThemeProvider>
   );
-}
+};
 
-export default App;
+export { App };
