@@ -1,5 +1,3 @@
-import React from "react";
-import { ApiResponse } from "../zodSchemas/ApiResponseSchema.ts";
 import {
   TableContainer,
   Table,
@@ -11,6 +9,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import React from "react";
+import { ApiResponse } from "../zodSchemas/ApiResponseSchema.ts";
 
 const DataResponse: React.FunctionComponent<{ apiResponse: ApiResponse }> = ({
   apiResponse,

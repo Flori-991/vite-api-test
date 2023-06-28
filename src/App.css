@@ -67,3 +67,11 @@
 /*.searchResults {*/
 /*  padding: 10px;*/
 /*}*/
+
+td {
+  max-width: 25rem;
+}
+
+table {
+  max-width: 100%;
+}
