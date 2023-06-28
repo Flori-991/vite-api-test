@@ -92,10 +92,6 @@
       {
         "selector": "TSTypeReference[typeName.name=/^(FC|FunctionComponent)$/]",
         "message": "Avoid explicit component types"
-      },
-      {
-        "selector": "ImportDeclaration[source.value=react] ImportDefaultSpecifier[local.name=React]",
-        "message": "React should not be imported as automatic JSX imports are enabled"
       }
     ],
     // @typescript-eslint rules
