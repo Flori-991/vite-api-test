@@ -14,17 +14,11 @@ const muiThemes = createTheme({
   },
 });
 
-const darkMode = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
 // const tableColumnStyle = makeStyles({
 //   tableCell: {
 //     maxWidth: "50px",
 //   },
 // });
 
-export { muiThemes, darkMode };
+export { muiThemes };
 // export { tableColumnStyle };

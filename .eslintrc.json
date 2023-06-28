@@ -43,14 +43,6 @@
     "new-parens": "off",
     "newline-per-chained-call": "off",
     "no-cond-assign": "warn",
-    "no-console": [
-      "warn",
-      {
-        "allow": [
-          "error"
-        ]
-      }
-    ],
     "no-debugger": "warn",
     "no-else-return": "error",
     "no-empty-pattern": "error",
@@ -100,14 +92,6 @@
       {
         "selector": "TSTypeReference[typeName.name=/^(FC|FunctionComponent)$/]",
         "message": "Avoid explicit component types"
-      },
-      {
-        "selector": "ImportDeclaration[source.value=react] ImportDefaultSpecifier[local.name=React]",
-        "message": "React should not be imported as automatic JSX imports are enabled"
-      },
-      {
-        "selector": "ImportDeclaration[source.value=@mui/material]",
-        "message": "Importing from @mui/material loads all components which is slow. Use narrower imports instead such as @mui/material/Button"
       }
     ],
     // @typescript-eslint rules
