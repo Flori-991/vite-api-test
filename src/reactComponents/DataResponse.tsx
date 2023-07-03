@@ -16,7 +16,7 @@ const DataResponse: React.FunctionComponent<{ apiResponse: ApiResponse }> = ({
   apiResponse,
 }) => (
   <Stack className="searchResults">
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="dictTable">
       <Table>
         <TableHead>
           <TableRow>

@@ -7,8 +7,7 @@ import { useState } from "react";
 import "./App.css";
 import { muiThemes } from "./assets/muiThemes.ts";
 import { DataResponse } from "./reactComponents/DataResponse.tsx";
-import { MainMenu } from "./reactComponents/MainMenu.tsx";
-// import { MainTabControl } from "./reactComponents/MainTabControl.tsx";
+import { ResponsiveAppBar } from "./reactComponents/ResponsiveAppBar.tsx";
 import {
   ApiResponse,
   ApiResponseSchema,
@@ -43,41 +42,39 @@ const App = () => {
 
   return (
     <ThemeProvider theme={muiThemes}>
-      <Stack alignItems="center">
-        <Stack className="dictHeader">
-          <MainMenu />
-        </Stack>
-        {/* <MainTabControl /> */}
-        <Stack
-          padding="1rem 0"
-          alignItems="center"
-          flexDirection="row"
-          gap="0.25rem"
-        >
-          <TextField
-            label={placeHolder}
-            variant="standard"
-            onKeyDown={(event) => searchOnEnter(event.key)}
-            onChange={(event) => setWordToSearch(event.target.value)}
-            id="searchBarInput"
-          />
-          <Button
-            className="searchButton"
-            variant="outlined"
-            onClick={() => getDictApiResponse()}
-            id="searchButton"
-          >
-            <Typography variant="button">Search</Typography>
-          </Button>
-        </Stack>
-        {isError ? (
-          <Typography variant="caption">Something went wrong ...</Typography>
-        ) : isLoading ? (
-          <CircularProgress />
-        ) : (
-          apiResponse && <DataResponse apiResponse={apiResponse} />
-        )}
+      <Stack className="dictHeader">
+        <ResponsiveAppBar />
       </Stack>
+      <Stack
+        padding="1rem 0"
+        alignItems="center"
+        flexDirection="row"
+        gap="0.25rem"
+        justifyContent="center"
+      >
+        <TextField
+          label={placeHolder}
+          variant="standard"
+          onKeyDown={(event) => searchOnEnter(event.key)}
+          onChange={(event) => setWordToSearch(event.target.value)}
+          id="searchBarInput"
+        />
+        <Button
+          className="searchButton"
+          variant="outlined"
+          onClick={() => getDictApiResponse()}
+          id="searchButton"
+        >
+          <Typography variant="button">Search</Typography>
+        </Button>
+      </Stack>
+      {isError ? (
+        <Typography variant="caption">Something went wrong ...</Typography>
+      ) : isLoading ? (
+        <CircularProgress />
+      ) : (
+        apiResponse && <DataResponse apiResponse={apiResponse} />
+      )}
     </ThemeProvider>
   );
 };

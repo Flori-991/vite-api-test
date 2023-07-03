@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ApiResponseSchema = z.array(
+const ApiResponseSchema = z.array(
   z.object({
     phonetics: z.array(
       z.object({
@@ -20,4 +20,7 @@ export const ApiResponseSchema = z.array(
   })
 );
 
-export type ApiResponse = z.infer<typeof ApiResponseSchema>;
+type ApiResponse = z.infer<typeof ApiResponseSchema>;
+
+export { ApiResponseSchema };
+export type { ApiResponse };
